@@ -1,0 +1,9 @@
+:root {
+}
+
+.header {
+    font-size: 40px;
+    -unity-text-outline-color: rgb(71, 54, 183);
+    color: rgb(109, 0, 255);
+    -unity-font-style: bold;
+}

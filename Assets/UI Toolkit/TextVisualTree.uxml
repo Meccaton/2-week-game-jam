@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/textStyleSheet.uss?fileID=7433441132597879392&amp;guid=aa87c6c74f0e74840bfefb5ad77de6b9&amp;type=3#textStyleSheet"/>
+    <ui:VisualElement name="Container" style="flex-grow: 1; justify-content: center; align-self: center;">
+        <ui:Label text="yo yo yo" name="textbox" class="header"/>
+    </ui:VisualElement>
+</ui:UXML>
