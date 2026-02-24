@@ -24,21 +24,21 @@ public class CoinFlipControllerV2 : MonoBehaviour
         top = new Vector3(0f, 2f, 0f);
 
         chances = new Dictionary<string, int>();
-        chances.Add("Blank", 0);
-        chances.Add("Heads", 50);
-        chances.Add("Tails", 50);
-        chances.Add("Circle", 0);
-        chances.Add("Swords", 0);
-        chances.Add("Crown", 0);
-        chances.Add("Sun", 0);
-        chances.Add("Diamond", 0);
-        chances.Add("Heart", 0);
-        chances.Add("Lighting", 0);
-        chances.Add("Shield", 0);
-        chances.Add("Square", 0);
-        chances.Add("Rhombus", 0);
-        chances.Add("Star", 0);
-        chances.Add("Triangle", 0);
+        chances.Add("Blank", 0);   // placeholder; shouldnt ever show up
+        chances.Add("Heads", 50);  // +1 score
+        chances.Add("Tails", 50);  // 0 score
+        chances.Add("Circle", 0);  // 
+        chances.Add("Swords", 0);  // 
+        chances.Add("Crown", 0);   // 
+        chances.Add("Sun", 0);     // 
+        chances.Add("Diamond", 0); // 
+        chances.Add("Heart", 0);   // 
+        chances.Add("Lighting", 0);// 
+        chances.Add("Shield", 0);  // 
+        chances.Add("Square", 0);  // 
+        chances.Add("Rhombus", 0); // 
+        chances.Add("Star", 0);    // 
+        chances.Add("Triangle", 0);// 
 
         displayFace = transform.Find(topFace);
         displayFace.gameObject.SetActive(true);
