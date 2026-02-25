@@ -695,6 +695,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   state: 0
+  playerScore: 0
+  opponentScore: 0
+  round: 0
+  maxRounds: 3
+  playerRecord: 0
+  opponentRecord: 0
   cfc: {fileID: 655944343}
   playerCoins: []
   opponentCoins: []
