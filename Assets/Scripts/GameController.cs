@@ -58,8 +58,10 @@ public class GameController : MonoBehaviour
         }
         else if (state == 5)
         {
-            //cfc.winners;
-            Debug.Log("Made it to post flipping state");
+            playerCoins = cfc.winners;
+            opponentCoins = cfc.opponentWinners;
+            Debug.Log("Player coins: " + playerCoins[0] + ", " + playerCoins[1] + ", " + playerCoins[2]);
+            Debug.Log("Opponent coins: " + opponentCoins[0] + ", " + opponentCoins[1] + ", " + opponentCoins[2]);
         }
     }
 }
