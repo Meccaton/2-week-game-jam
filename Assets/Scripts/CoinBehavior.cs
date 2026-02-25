@@ -117,8 +117,8 @@ public class CoinBehavior : MonoBehaviour
 
             displayFace = transform.Find(topFace);
             displayFace.gameObject.SetActive(true);
-            Debug.Log("displayFace = " + displayFace);
-            Debug.Log("previousFace = " + previousFace);
+            //Debug.Log("displayFace = " + displayFace);
+            //Debug.Log("previousFace = " + previousFace);
         }
     }
 }

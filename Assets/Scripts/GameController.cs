@@ -70,69 +70,74 @@ public class GameController : MonoBehaviour
         }
         else if (state == 5) // acquire coin data, determine winner
         {
-            playerScore = 0;
-            opponentScore = 0;
-
-            playerCoins = cfc.winners;
-            opponentCoins = cfc.opponentWinners;
-            
-            foreach(string c in playerCoins)
-            {
-                if(c == "Heads")
-                {
-                    playerScore++;
-                }
-            }
-
-            foreach(string c in opponentCoins)
-            {
-                if(c == "Heads")
-                {
-                    opponentScore++;
-                }
-            }
-
-            if(playerScore > opponentScore)
-            {
-                playerRecord++;
-                round++;
-                state = 3;
-                Debug.Log("Player won this round");
-            }
-            else if(opponentScore > playerScore)
-            {
-                opponentRecord++;
-                round++;
-                state = 3;
-                Debug.Log("Opponent won this round");
-            }
-            else
-            {
-                state = 3;
-                Debug.Log("Draw; replaying this round");
-            }
-
-            if (round >= maxRounds)
-            {
-                if (playerScore > opponentScore)
-                {
-                    state = 6;
-                    Debug.Log("Player wins");
-                }
-                else if (opponentScore > playerScore)
-                {
-                    state = 6;
-                    Debug.Log("Opponent wins");
-                }
-                else
-                {
-                    Debug.Log("How did you get here?");
-                }
-            }
+            CalcScore();
         }
         else if(state == 6)
         {
+            Debug.Log("Player has won this game");
+        }
+    }
 
+    void CalcScore()
+    {
+        playerScore = 0;
+        opponentScore = 0;
+
+        playerCoins = cfc.winners;
+        opponentCoins = cfc.opponentWinners;
+
+        foreach (string c in playerCoins)
+        {
+            if (c == "Heads")
+            {
+                playerScore++;
+            }
+        }
+
+        foreach (string c in opponentCoins)
+        {
+            if (c == "Heads")
+            {
+                opponentScore++;
+            }
+        }
+
+        if (playerScore > opponentScore)
+        {
+            playerRecord++;
+            round++;
+            state = 3;
+            Debug.Log("Player won this round");
+        }
+        else if (opponentScore > playerScore)
+        {
+            opponentRecord++;
+            round++;
+            state = 3;
+            Debug.Log("Opponent won this round");
+        }
+        else
+        {
+            state = 3;
+            Debug.Log("Draw; replaying this round");
+        }
+
+        if (round >= maxRounds)
+        {
+            if (playerScore > opponentScore)
+            {
+                state = 6;
+                Debug.Log("Player wins");
+            }
+            else if (opponentScore > playerScore)
+            {
+                state = 6;
+                Debug.Log("Opponent wins");
+            }
+            else
+            {
+                Debug.Log("How did you get here?");
+            }
         }
     }
 }
