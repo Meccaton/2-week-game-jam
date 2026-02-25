@@ -14,10 +14,10 @@ void Checkers_float(
     float z = position.z;
 
     if (x < 0)  {
-        x = abs(x - 1.0);
+        x = abs(x - squareSize);
     }
     if (z < 0)  {
-        z = abs(z - 1.0);
+        z = abs(z - squareSize);
     }
     if (z % (squareSize * 2.0) > squareSize)    {
         result = abs(result - 1); // this logic just flips the result
