@@ -1,14 +1,19 @@
-using UnityEngine   ;
+using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
-using System.Reflection.Emit;
 
 public class DialogueController : MonoBehaviour
 {
     public UIDocument document;
 
+    // Assign the dialogue asset in the Inspector
+    public DialogueData dialogueData;
+
     private UnityEngine.UIElements.Label dialogueLabel;
-    private bool isTyping;
+
+    private int currentLine = 0;
+    private bool isTyping = false;
+    private Coroutine typingCoroutine;
 
     void Start()
     {
@@ -20,15 +25,30 @@ public class DialogueController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartDialogue("Hello punk. Ima beat you to a pulp");
-            StartDialogue("Just wait.");
-        }
-    }
+            if (dialogueData == null || dialogueData.lines.Length == 0)
+                return;
 
-    public void StartDialogue(string text)
-    {
-        if (!isTyping)
-            StartCoroutine(TypeText(text));
+            if (!isTyping)
+            {
+                if (currentLine < dialogueData.lines.Length)
+                {
+                    typingCoroutine = StartCoroutine(TypeText(dialogueData.lines[currentLine]));
+                    currentLine++;
+                }
+                else
+                {
+                    dialogueLabel.text = "";
+                    currentLine = 0; // reset to allow replay
+                }
+            }
+            else
+            {
+                // Finish typing instantly
+                StopCoroutine(typingCoroutine);
+                dialogueLabel.text = dialogueData.lines[currentLine - 1];
+                isTyping = false;
+            }
+        }
     }
 
     private IEnumerator TypeText(string text)
