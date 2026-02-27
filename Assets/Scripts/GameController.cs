@@ -190,8 +190,18 @@ public class GameController : MonoBehaviour
                 break;
             case "Star":
                 self.Add(Modifiers.TwoPoints);
+                Debug.Log("Star, 2 points");
                 break;
-            case "Worm":
+            case "Circle":
+                self.Add(Modifiers.MinusOne);
+                Debug.Log("Circle, minus 1 point");
+                break;
+            case "Square":
+                self.Add(Modifiers.MinusTwo);
+                Debug.Log("Square, minus 2 points");
+                break;
+            case "Sun"://change to Worm later
+                Debug.Log("Sun, early is better");
                 if(i == 0)
                 {
                     self.Add(Modifiers.TwoPoints);
@@ -208,20 +218,24 @@ public class GameController : MonoBehaviour
             case "Tails":
                 self.Add(Modifiers.None);
                 break;
-            case "a":
+            case "Triangle":
                 self.Add(Modifiers.Send);
+                Debug.Log("Triangle, send a coin");
                 break;
-            case "b":
+            case "Swords":
                 self.Add(Modifiers.Take);
+                Debug.Log("Swords, take a coin");
                 break;
             case "c":
                 self.Add(Modifiers.Swap);
                 break;
-            case "d":
+            case "Lightning":
                 self.Add(Modifiers.CancelSelf);
+                Debug.Log("Lightning, cancel next coin");
                 break;
-            case "e":
+            case "Shield":
                 self.Add(Modifiers.CancelOther);
+                Debug.Log("Shield, cancel opposing coin");
                 break;
         }        
     }

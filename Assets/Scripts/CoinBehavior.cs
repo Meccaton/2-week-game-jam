@@ -31,18 +31,18 @@ public class CoinBehavior : MonoBehaviour
             { "Blank", 0 },
             { "Heads", 50 },
             { "Tails", 50 },
-            { "Circle", 0 },
-            { "Swords", 0 },
+            { "Circle", 50 },
+            { "Swords", 50 },
             { "Crown", 0 },
-            { "Sun", 0 },
+            { "Sun", 50 },
             { "Diamond", 0 },
             { "Heart", 0 },
-            { "Lighting", 0 },
-            { "Shield", 0 },
-            { "Square", 0 },
+            { "Lightning", 50 },
+            { "Shield", 50 },
+            { "Square", 50 },
             { "Rhombus", 0 },
-            { "Star", 0 },
-            { "Triangle", 0 }
+            { "Star", 50 },
+            { "Triangle", 50 }
         };
     }
 
