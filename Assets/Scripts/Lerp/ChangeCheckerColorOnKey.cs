@@ -26,11 +26,11 @@ namespace Lerp
             }
             if (Input.GetKeyDown("4"))
             {
-                LandscapeManager.Instance.ChangeSkyboxTopColor(new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), 0.5f);
+                LandscapeManager.Instance.ChangeSkyboxTopColor(new Color(Random.Range(-1f, 2f), Random.Range(-1f, 2f), Random.Range(-1f, 2f)), 0.5f);
             }
             if (Input.GetKeyDown("5"))
             {
-                LandscapeManager.Instance.ChangeSkyboxBottomColor(new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), 0.5f);
+                LandscapeManager.Instance.ChangeSkyboxBottomColor(new Color(Random.Range(-1f, 2f), Random.Range(-1f, 2f), Random.Range(-1f, 2f)), 0.5f);
             }
         }
     }
