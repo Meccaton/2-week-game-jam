@@ -704,6 +704,8 @@ MonoBehaviour:
   cfc: {fileID: 655944343}
   playerCoins: []
   opponentCoins: []
+  playerStack: 
+  oppStack: 
 --- !u!4 &899726586
 Transform:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ public class CoinFlipControllerV2 : MonoBehaviour
     public List<CoinBehavior> coins;
     public List<OpponentCoinBehavior> opponentCoins;
     public int coinIdx;
-    public List<string> winners;
-    public List<string> opponentWinners;
+    public List<string> winners = new();
+    public List<string> opponentWinners = new();
 
     void Start()
     {
@@ -19,19 +19,19 @@ public class CoinFlipControllerV2 : MonoBehaviour
 
         coinIdx = 0;
 
-        winners = new List<string>(3)
-        {
-            null,
-            null,
-            null
-        };
+        //winners = new List<string>(3)
+        //{
+        //    null,
+        //    null,
+        //    null
+        //};
 
-        opponentWinners = new List<string>(3)
-        {
-            null,
-            null,
-            null
-        };
+        //opponentWinners = new List<string>(3)
+        //{
+        //    null,
+        //    null,
+        //    null
+        //};
     }
 
     void Update()
@@ -65,8 +65,6 @@ public class CoinFlipControllerV2 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            winners[coinIdx] = null;
-            opponentWinners[coinIdx] = null;
             coins[coinIdx].movingUp = true;
             opponentCoins[coinIdx].movingUp = true;
             
@@ -86,12 +84,22 @@ public class CoinFlipControllerV2 : MonoBehaviour
 
     void GetOutcome()
     {
-        winners[coinIdx] = coins[coinIdx].CalculateOutcome();
-        opponentWinners[coinIdx] = opponentCoins[coinIdx].CalculateOutcome();
-        if (winners[coinIdx] != null)
-        {
-            state = 3;
-        }
+        string playerOutcome = coins[coinIdx].CalculateOutcome();
+        winners.Add(playerOutcome);
+        string oppOutcome = opponentCoins[coinIdx].CalculateOutcome();
+        opponentWinners.Add(oppOutcome);
+
+        // IMPORTANT!!!!
+        // do not add debug statements referencing winners[coinIdx] or opponentWinners[coinIdx] here like below
+        // idk why but it adds random coins to the lists and breaks stuff down the line
+
+        //if (winners[coinIdx] != null && opponentWinners[coinIdx] != null)
+        //{
+        //    state = 3;
+        //}
+        //Debug.Log("Player winner[" + coinIdx + "] = " + winners[coinIdx]);
+        //Debug.Log("Opponent winner[" + coinIdx + "] = " +  opponentWinners[coinIdx]);
+        state = 3;
     }
 
     void WaitForInput()
@@ -102,9 +110,16 @@ public class CoinFlipControllerV2 : MonoBehaviour
             if(coinIdx > 2)
             {
                 coinIdx = 0;
+                
                 flippingTime = false;
             }
             state = 0;
         }
+    }
+
+    public void ResetResults()
+    {
+        winners.Clear();
+        opponentWinners.Clear();
     }
 }
