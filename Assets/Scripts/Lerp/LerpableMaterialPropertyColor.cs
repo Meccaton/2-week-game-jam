@@ -18,7 +18,6 @@ namespace Lerp
             {
                 colorA = renderer.material.GetColor(colorPropertyName);
             }
-            this.StartLerp(0, 1, Random.Range(3f, 5f));
         }
 
         protected override void ApplyValue(float value)
