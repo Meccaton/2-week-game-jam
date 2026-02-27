@@ -83,9 +83,16 @@ public class GameController : MonoBehaviour
         {
             CalcScore();
         }
-        else if(state == 6)
+        else if(state == 6) // pause
         {
-            //Debug.Log("Player has won this game");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                state = 7;
+            }
+        }
+        else if(state == 7)
+        {
+            //TBD
         }
     }
 
@@ -111,32 +118,32 @@ public class GameController : MonoBehaviour
         }
 
         //Second pass to apply reordering
-        //Apply opponent's effects first
+        //Apply player's effects first
         for (int i = 0; i < Mathf.Max(playerStack.Count, oppStack.Count); i++)
         {
-            if (i < oppStack.Count)
-            {
-                ReorderModifiers(oppStack, playerStack, oppStack[i], i);
-            }
-
             if (i < playerStack.Count)
             {
                 ReorderModifiers(playerStack, oppStack, playerStack[i], i);
+            }
+
+            if (i < oppStack.Count)
+            {
+                ReorderModifiers(oppStack, playerStack, oppStack[i], i);
             }
         }
         //Third pass to apply scoring
         for(int i = 0; i < Mathf.Max(playerStack.Count, oppStack.Count); i++)
         {
+            if (i < playerStack.Count)
+            {
+                int temp = AddPoints(playerStack[i]);
+                playerScore += temp;
+            }
+
             if (i < oppStack.Count)
             {
                 int temp = AddPoints(oppStack[i]);
                 opponentScore += temp;
-            }
-
-            if(i < playerStack.Count)
-            {
-                int temp = AddPoints(playerStack[i]);
-                playerScore += temp;
             }
         }
 
