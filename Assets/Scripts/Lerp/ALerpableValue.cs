@@ -7,22 +7,28 @@ namespace Lerp
     public abstract class ALerpableValue : MonoBehaviour
     {
         /// <summary>
-        /// Lerp value between startValue and endValue. startValue and endValue should both be 0.0 to 1.0
+        /// Lerp value from value A to value B for duration
         /// </summary>
-        /// <param name="startValue"></param>
-        /// <param name="endValue"></param>
-        /// <param name="duration"></param>
-        public void StartLerp(float startValue, float endValue, float duration)
+        /// <param name="duration"></param> Min is 0 seconds
+        public void StartLerp(float duration)
         {
-            if (duration <= 0.0f)
+            if (duration < 0.0f)
             {
-                throw new Exception("Cannot have negative/zero duration");
+                throw new Exception("Cannot have negative duration");
             }
 
-            StartCoroutine(LerpValue(startValue, endValue, duration));
+            if (duration > 0.0f)
+            {
+                StartCoroutine(LerpValue(duration));
+            }
+            else
+            {
+                // Instantly apply change if duration 0
+                ApplyValue(1f);
+            }
         }
 
-        private IEnumerator LerpValue(float startValue, float endValue, float duration)
+        private IEnumerator LerpValue(float duration)
         {
             float timeElapsed = 0f;
             while (timeElapsed < duration)

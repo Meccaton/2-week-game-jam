@@ -1,5 +1,103 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2784929205208842292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2580972103956916763}
+  - component: {fileID: 3812769844923600453}
+  m_Layer: 0
+  m_Name: Checker Color Lerper 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2580972103956916763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784929205208842292}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9046166548071569558}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3812769844923600453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784929205208842292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d871268225304d6a98be4a8c5113074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lerp.LerpableMaterialPropertyColor
+  renderComponent: {fileID: 8593026646686425379}
+  colorPropertyName: _CheckerColor2
+  colorA: {r: 0, g: 0, b: 0, a: 0}
+  useStartingColorForColorA: 1
+  colorB: {r: 1, g: 0, b: 0, a: 0}
+--- !u!1 &4290082137203431109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5976873314439154897}
+  - component: {fileID: 6841964291328066142}
+  m_Layer: 0
+  m_Name: Checker Color Lerper 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5976873314439154897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290082137203431109}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9046166548071569558}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6841964291328066142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290082137203431109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d871268225304d6a98be4a8c5113074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lerp.LerpableMaterialPropertyColor
+  renderComponent: {fileID: 8593026646686425379}
+  colorPropertyName: _CheckerColor1
+  colorA: {r: 0, g: 0, b: 0, a: 0}
+  useStartingColorForColorA: 1
+  colorB: {r: 1, g: 0.7337059, b: 0, a: 0}
 --- !u!1 &4881329777079576910
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,8 +110,6 @@ GameObject:
   - component: {fileID: 5836306551087869354}
   - component: {fileID: 8593026646686425379}
   - component: {fileID: 3468189316712238493}
-  - component: {fileID: 1201170565555152766}
-  - component: {fileID: 2430264917109616351}
   m_Layer: 0
   m_Name: CheckerGround
   m_TagString: Untagged
@@ -33,7 +129,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5976873314439154897}
+  - {fileID: 2580972103956916763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5836306551087869354
@@ -115,37 +213,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1201170565555152766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4881329777079576910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d871268225304d6a98be4a8c5113074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lerp.LerpableMaterialPropertyColor
-  renderer: {fileID: 8593026646686425379}
-  colorPropertyName: _CheckerColor1
-  colorA: {r: 0, g: 0, b: 0, a: 0}
-  useStartingColorForColorA: 1
-  colorB: {r: 1, g: 0.7337059, b: 0, a: 0}
---- !u!114 &2430264917109616351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4881329777079576910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d871268225304d6a98be4a8c5113074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lerp.LerpableMaterialPropertyColor
-  renderer: {fileID: 8593026646686425379}
-  colorPropertyName: _CheckerColor2
-  colorA: {r: 0, g: 0, b: 0, a: 0}
-  useStartingColorForColorA: 1
-  colorB: {r: 1, g: 0, b: 0, a: 0}
