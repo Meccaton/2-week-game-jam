@@ -9,6 +9,7 @@ public class LandscapeManager : MonoBehaviour
 {
     [SerializeField] private LerpableMaterialPropertyColor checkerColorLerper1;
     [SerializeField] private LerpableMaterialPropertyColor checkerColorLerper2;
+    [SerializeField] private LerpableMaterialPropertyFloat squareSizeLerper;
 
     public static LandscapeManager Instance;
 
@@ -40,8 +41,15 @@ public class LandscapeManager : MonoBehaviour
 
     private void ChangeCheckerColor(LerpableMaterialPropertyColor checkerColorLerper, Color c, float duration)
     {
-        checkerColorLerper.SetStartColorToCurrentColor();
+        checkerColorLerper.SetStartLerpValueToCurrentValue();
         checkerColorLerper.SetEndColor(c);
         checkerColorLerper.StartLerp(duration);
+    }
+
+    public void ChangeCheckerSquareSize(float size, float duration)
+    {
+        squareSizeLerper.SetStartLerpValueToCurrentValue();
+        squareSizeLerper.setLerpEndValue(size);
+        squareSizeLerper.StartLerp(duration);
     }
 }

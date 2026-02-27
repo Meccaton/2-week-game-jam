@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &286104948
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 286104949}
-  m_Layer: 0
-  m_Name: Just showing how you can use LandscapeManager, disable when you get it
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &286104949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286104948}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 915744488}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &417431277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,51 +233,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc3f6a959834341a0a75fa404edfc8bb, type: 3}
---- !u!1 &915744487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 915744488}
-  - component: {fileID: 915744489}
-  m_Layer: 0
-  m_Name: DISABLE ME ChangeCheckerColorOnKey
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &915744488
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915744487}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.00537, y: 0, z: 1.71526}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 286104949}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &915744489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915744487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1890fa856d27b4176990e6a85f52626f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &1058703520
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   checkerColorLerper1: {fileID: 676337378182494021}
   checkerColorLerper2: {fileID: 676337378182494020}
+  squareSizeLerper: {fileID: 1944173173}
 --- !u!1001 &1115329301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -723,6 +648,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1794743986
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7389049908421128831, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_Name
+      value: Landscape Manager Demo (use number keys)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.70414
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.01265
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251922655414224412, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba38f290d111e4beaaf790b0287f82eb, type: 3}
 --- !u!1001 &1795748781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -849,6 +831,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc3f6a959834341a0a75fa404edfc8bb, type: 3}
+--- !u!114 &1944173173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2693700942461725866, guid: 331060fb35ec74da1b8ca555abcfa7fd, type: 3}
+  m_PrefabInstance: {fileID: 676337378182494019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7394d0f092c914f58884cce4ef1525a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LerpableMaterialFloatProperty
 --- !u!1001 &2105288674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1071,4 +1064,4 @@ SceneRoots:
   - {fileID: 583285707}
   - {fileID: 1794544476}
   - {fileID: 1058703521}
-  - {fileID: 915744488}
+  - {fileID: 1794743986}
