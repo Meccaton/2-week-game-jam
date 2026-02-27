@@ -9,6 +9,9 @@ public class LandscapeManager : MonoBehaviour
 {
     [SerializeField] private LerpableMaterialPropertyColor checkerColorLerper1;
     [SerializeField] private LerpableMaterialPropertyColor checkerColorLerper2;
+    [SerializeField] private LerpableMaterialPropertyFloat squareSizeLerper;
+    [SerializeField] private LerpableMaterialPropertyColorNoRenderer skyboxTopLerper;
+    [SerializeField] private LerpableMaterialPropertyColorNoRenderer skyboxBottomLerper;
 
     public static LandscapeManager Instance;
 
@@ -40,8 +43,26 @@ public class LandscapeManager : MonoBehaviour
 
     private void ChangeCheckerColor(LerpableMaterialPropertyColor checkerColorLerper, Color c, float duration)
     {
-        checkerColorLerper.SetStartColorToCurrentColor();
+        checkerColorLerper.SetStartLerpValueToCurrentValue();
         checkerColorLerper.SetEndColor(c);
         checkerColorLerper.StartLerp(duration);
+    }
+
+    public void ChangeCheckerSquareSize(float size, float duration)
+    {
+        squareSizeLerper.SetStartLerpValueToCurrentValue();
+        squareSizeLerper.setLerpEndValue(size);
+        squareSizeLerper.StartLerp(duration);
+    }
+
+    // TODO: If it wasn't a game jam and had more time I'd just have one ChangeColor method that checker and skybox would both call,
+    // as they both should inherit from the same ALerpableColor class (that doesn't exist) 
+    public void ChangeSkyboxTopColor(Color c, float duration) => ChangeSkyboxColor(skyboxTopLerper, c, duration);
+    public void ChangeSkyboxBottomColor(Color c, float duration) => ChangeSkyboxColor(skyboxBottomLerper, c, duration);
+    private void ChangeSkyboxColor(LerpableMaterialPropertyColorNoRenderer skyboxLerper, Color c, float duration)
+    {
+        skyboxLerper.SetStartLerpValueToCurrentValue();
+        skyboxLerper.SetEndColor(c);
+        skyboxLerper.StartLerp(duration);
     }
 }

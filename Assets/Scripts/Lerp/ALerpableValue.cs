@@ -45,5 +45,7 @@ namespace Lerp
         /// </summary>
         /// <param name="value"></param>
         protected abstract void ApplyValue(float value);
+
+        public abstract void SetStartLerpValueToCurrentValue();
     }
 }

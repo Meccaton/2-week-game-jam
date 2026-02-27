@@ -13,10 +13,7 @@ namespace Lerp
         [FormerlySerializedAs("colorA")] [SerializeField] private Color startColor;
         [FormerlySerializedAs("colorB")] [SerializeField] private Color endColor;
         
-        public void SetStartColorToCurrentColor()
-        {
-            startColor = renderComponent.material.GetColor(colorPropertyName);
-        }
+        public override void SetStartLerpValueToCurrentValue() => startColor = renderComponent.material.GetColor(colorPropertyName);
 
         protected override void ApplyValue(float value)
         {
