@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UIElements;
+using Kalkatos.DottedArrow;
 
 
 public class GameController : MonoBehaviour
@@ -19,8 +20,10 @@ public class GameController : MonoBehaviour
     public List<string> opponentCoins = new();
     public List<Modifiers> playerStack = new();
     public List<Modifiers> oppStack = new();
-    //public int playerExtraIdx = 3;
-    //public int oppExtraIdx = 3;
+    //public int arrowIdx;
+    //public List<Arrow> arrows = new();
+    //public List<Transform> playerAnchors = new();
+    //public List<Transform> oppAnchors = new();
 
     public enum Modifiers
     {
@@ -170,12 +173,12 @@ public class GameController : MonoBehaviour
 
         if (round >= maxRounds)
         {
-            if (playerScore > opponentScore)
+            if (playerRecord > opponentRecord)
             {
                 state = 6;
                 Debug.Log("Player wins");
             }
-            else if (opponentScore > playerScore)
+            else if (opponentRecord > playerRecord)
             {
                 state = 6;
                 Debug.Log("Opponent wins");

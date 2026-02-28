@@ -121,5 +121,13 @@ public class CoinFlipControllerV2 : MonoBehaviour
     {
         winners.Clear();
         opponentWinners.Clear();
+        foreach(CoinBehavior cb in coins)
+        {
+            cb.DisableText();
+        }
+        foreach (OpponentCoinBehavior ocb in opponentCoins)
+        {
+            ocb.DisableText();
+        }
     }
 }

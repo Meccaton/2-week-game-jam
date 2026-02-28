@@ -11,6 +11,7 @@ public class OpponentCoinBehavior : MonoBehaviour
     public Transform displayFace;
     public Transform previousFace;
     public Dictionary<string, int> chances;
+    public CoinTextController ctc;
 
     void Start()
     {
@@ -92,6 +93,8 @@ public class OpponentCoinBehavior : MonoBehaviour
             if (rando < runningTotal)
             {
                 DisplayFace(entry.Key);
+                ctc.ChangeText(entry.Key);
+                EnableText();
                 return entry.Key;
             }
         }
@@ -119,5 +122,15 @@ public class OpponentCoinBehavior : MonoBehaviour
             //Debug.Log("displayFace = " + displayFace);
             //Debug.Log("previousFace = " + previousFace);
         }
+    }
+
+    public void EnableText()
+    {
+        ctc.EnableText();
+    }
+
+    public void DisableText()
+    {
+        ctc.DisableText();
     }
 }
