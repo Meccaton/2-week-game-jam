@@ -140,6 +140,10 @@ public class GameController : MonoBehaviour
 
         pArrowIdx = 0;
         oppArrowIdx = 0;
+        pCurAnchor = null;
+        pCurTarget = null;
+        oppCurAnchor = null;
+        oppCurTarget = null;
 
         int uh = 0;
         foreach (string s in cfc.winners)
