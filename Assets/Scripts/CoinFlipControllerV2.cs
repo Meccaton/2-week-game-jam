@@ -5,7 +5,7 @@ public class CoinFlipControllerV2 : MonoBehaviour
 {
     public bool flippingTime;
     public int state;
-    public GameObject cam;
+    //public GameObject cam;
     public List<CoinBehavior> coins;
     public List<OpponentCoinBehavior> opponentCoins;
     public int coinIdx;
@@ -38,8 +38,8 @@ public class CoinFlipControllerV2 : MonoBehaviour
     {
         if(flippingTime)
         {
-            cam.transform.LookAt(coins[coinIdx].transform);
-            cam.transform.rotation *= Quaternion.Euler(-15f, 0f, 0f);
+            //cam.transform.LookAt(coins[coinIdx].transform);
+            //cam.transform.rotation *= Quaternion.Euler(-15f, 0f, 0f);
 
             if (state == 0)
             {
