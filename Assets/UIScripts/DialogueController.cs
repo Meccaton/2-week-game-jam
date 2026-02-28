@@ -9,10 +9,13 @@ public class DialogueController : MonoBehaviour
     // Assign the dialogue asset in the Inspector
     public DialogueData dialogueData;
 
+    public Animator npcAnimator;
+
     private UnityEngine.UIElements.Label dialogueLabel;
 
     private int currentLine = 0;
     private bool isTyping = false;
+    private bool dialogueFinished = false;
     private Coroutine typingCoroutine;
 
     void Start()
@@ -23,7 +26,7 @@ public class DialogueController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !dialogueFinished)
         {
             if (dialogueData == null || dialogueData.lines.Length == 0)
                 return;
@@ -37,8 +40,9 @@ public class DialogueController : MonoBehaviour
                 }
                 else
                 {
-                    dialogueLabel.text = "";
-                    currentLine = 0; // reset to allow replay
+                    Debug.Log("Dialogue Done");
+                    dialogueFinished = true;
+                    npcAnimator.SetTrigger("LeaveTrigger");
                 }
             }
             else
