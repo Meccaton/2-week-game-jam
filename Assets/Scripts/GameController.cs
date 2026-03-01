@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using Slider = UnityEngine.UI.Slider;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class GameController : MonoBehaviour
@@ -35,6 +37,11 @@ public class GameController : MonoBehaviour
     public int coinOrganizingIdx = 0;
     public Slider playerSlider;
     public Slider oppSlider;
+    public TMP_Text instructions;
+    public TMP_Text winText1;
+    public TMP_Text winText2;
+    public float winTextTimer = 0f;
+    public float winTextAlternatingTime = .1f;
 
     public enum Modifiers
     {
@@ -103,8 +110,10 @@ public class GameController : MonoBehaviour
         }
         else if(state == 6)
         {
+            instructions.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                instructions.enabled = false;
                 if(coinOrganizingIdx < 3)
                 {
                     //Debug.Log("Space pressed for Reorganize");
@@ -126,15 +135,28 @@ public class GameController : MonoBehaviour
         }
         else if(state == 8)
         {
+            instructions.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                instructions.enabled = false;
                 //Debug.Log("Space pressed for AssessResults");
                 AssessResults();
             }
         }
         else if (state == 9)
         {
-            //TBD
+
+            if (Time.time >= winTextTimer)
+            {
+                winText1.enabled = !winText1.enabled;
+                winText2.enabled = !winText2.enabled;
+                winTextTimer = Time.time + winTextAlternatingTime;
+            }
+                instructions.enabled = true;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 
@@ -266,17 +288,23 @@ public class GameController : MonoBehaviour
             if (playerRecord > opponentRecord)
             {
                 state = 9;
-                Debug.Log("Player wins");
+                winText1.text = "YOU WIN";
+                winText2.text = "YOU WIN";
+                //Debug.Log("Player wins");
             }
             else if (opponentRecord > playerRecord)
             {
                 state = 9;
-                Debug.Log("Opponent wins");
+                winText1.text = "YOU LOSE";
+                winText2.text = "YOU LOSE";
+                //Debug.Log("Opponent wins");
             }
             else
             {
-                Debug.Log("How did you manage to reach a tie in a best of 3?");
+                //Debug.Log("How did you manage to reach a tie in a best of 3?");
             }
+            winText1.enabled = true;
+            winTextTimer = Time.time + winTextAlternatingTime;
         }
     }
 
@@ -460,11 +488,9 @@ public class GameController : MonoBehaviour
                 cfc.EnableText(i, player);
                 //Debug.Log("Displaying " + val.ToString() + " at " + i + " for " + player);
                 return -2;
-            case Modifiers.None:
+            default:
                 cfc.UpdateText(val.ToString(), i, player);
                 cfc.EnableText(i, player);
-                return 0;
-            default:
                 return 0;
         }
     }

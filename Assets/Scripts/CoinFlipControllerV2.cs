@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 
 public class CoinFlipControllerV2 : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class CoinFlipControllerV2 : MonoBehaviour
     public int coinIdx;
     public List<string> winners = new();
     public List<string> opponentWinners = new();
+    public TMP_Text instructions;
+    public AudioSource coinFlipAS;
+    public AudioSource coinLandAS;
 
     void Start()
     {
@@ -62,9 +66,11 @@ public class CoinFlipControllerV2 : MonoBehaviour
 
     void Hold()
     {
-
+        instructions.enabled = true;
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            instructions.enabled = false;
+            coinFlipAS.Play();
             //Debug.Log("Space pressed for CoinFlip");
             coins[coinIdx].movingUp = true;
             opponentCoins[coinIdx].movingUp = true;
@@ -79,6 +85,7 @@ public class CoinFlipControllerV2 : MonoBehaviour
         opponentCoins[coinIdx].FlipAnimation();
         if (check)
         {
+            coinLandAS.Play();
             state = 2;
         }
     }
