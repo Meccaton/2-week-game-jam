@@ -8,7 +8,7 @@ public class CoinFlipController : MonoBehaviour
     public Vector3 top;
     public Vector3 bot;
     public float moveSpeed = 1.0f;
-    public GameObject cam;
+    //public GameObject cam;
     public Vector3 originalPos;
 
     void Start()
@@ -20,7 +20,7 @@ public class CoinFlipController : MonoBehaviour
         movingUp = true;
         top = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
         bot = transform.position;
-        originalPos = cam.transform.position;
+        //originalPos = cam.transform.position;
     }
 
     void Update()
@@ -45,9 +45,9 @@ public class CoinFlipController : MonoBehaviour
 
     void Hold()
     {
-        cam.transform.position = Vector3.Lerp(cam.transform.position, originalPos, 2 * Time.deltaTime);
+        //cam.transform.position = Vector3.Lerp(cam.transform.position, originalPos, 2 * Time.deltaTime);
         //cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.Euler(0f, 0f, 0f), 1 * Time.deltaTime);
-        cam.transform.LookAt(transform);
+        //cam.transform.LookAt(transform);
 
         if (Input.GetKeyDown("space"))
         {
@@ -61,7 +61,7 @@ public class CoinFlipController : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, top, moveSpeed * Time.deltaTime);
             //cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.Euler(-30f, 0f, 0f), .9f * Time.deltaTime);
-            cam.transform.LookAt(transform);
+            //cam.transform.LookAt(transform);
 
             if (transform.position.y >= top.y)
             {
@@ -72,7 +72,7 @@ public class CoinFlipController : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, bot, moveSpeed * Time.deltaTime);
             //cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.Euler(0f, 0f, 0f), 1 * Time.deltaTime);
-            cam.transform.LookAt(transform);
+            //cam.transform.LookAt(transform);
         }
         transform.Rotate(1200.0f * Time.deltaTime, 0, 0);
 
@@ -100,9 +100,9 @@ public class CoinFlipController : MonoBehaviour
 
     void WaitForInput()
     {
-        cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(0f, .5f, 0f), 2 * Time.deltaTime);
+        //cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(0f, .5f, 0f), 2 * Time.deltaTime);
         //cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.Euler(90f, 0f, 0f), 1 * Time.deltaTime);
-        cam.transform.LookAt(transform);
+        //cam.transform.LookAt(transform);
 
         movingUp = true;
 

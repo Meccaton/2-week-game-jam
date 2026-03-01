@@ -3,6 +3,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using UnityEngine.Rendering;
+using Slider = UnityEngine.UI.Slider;
 
 
 public class GameController : MonoBehaviour
@@ -30,6 +33,8 @@ public class GameController : MonoBehaviour
     public List<Transform> playerAnchors = new();
     public List<Transform> oppAnchors = new();
     public int coinOrganizingIdx = 0;
+    public Slider playerSlider;
+    public Slider oppSlider;
 
     public enum Modifiers
     {
@@ -63,6 +68,8 @@ public class GameController : MonoBehaviour
         if(state == 0) // new character walks in
         {
             // TODO
+            playerSlider.value = 0;
+            oppSlider.value = 0;
             state = 1;
         }
         else if(state == 1) // character dialogue
@@ -100,6 +107,7 @@ public class GameController : MonoBehaviour
             {
                 if(coinOrganizingIdx < 3)
                 {
+                    //Debug.Log("Space pressed for Reorganize");
                     Reorganize(coinOrganizingIdx);
                     coinOrganizingIdx++;
                 }
@@ -113,12 +121,15 @@ public class GameController : MonoBehaviour
         else if(state == 7)
         {
             ApplyScoring();
+            state = 8;
+            //Debug.Log("state has been set to 8");
         }
-        else if (state == 8) // pause
+        else if(state == 8)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                state = 9;
+                //Debug.Log("Space pressed for AssessResults");
+                AssessResults();
             }
         }
         else if (state == 9)
@@ -182,6 +193,8 @@ public class GameController : MonoBehaviour
         if (i < pStack.Count)
         {
             ReorderModifiers(pStack, oStack, i, true);
+            //cfc.UpdateText(pStack[i].ToString(), i, true);
+            //cfc.EnableText(i, true);
             if (pCurAnchor && pCurTarget)
             {
                 PlaceArrow(true);
@@ -192,6 +205,8 @@ public class GameController : MonoBehaviour
         if (i < oStack.Count)
         {
             ReorderModifiers(oStack, pStack, i, false);
+            //cfc.UpdateText(oStack[i].ToString(), i, false);
+            //cfc.EnableText(i, false);
             if (oppCurAnchor && oppCurTarget)
             {
                 PlaceArrow(false);
@@ -207,20 +222,24 @@ public class GameController : MonoBehaviour
         {
             if (i < pStack.Count)
             {
-                int temp = AddPoints(pStack[i]);
+                int temp = AddPoints(pStack[i], i, true);
                 playerScore += temp;
             }
 
             if (i < oStack.Count)
             {
-                int temp = AddPoints(oStack[i]);
+                int temp = AddPoints(oStack[i], i, false);
                 opponentScore += temp;
             }
         }
+    }
 
+    void AssessResults()
+    {
         if (playerScore > opponentScore)
         {
             playerRecord++;
+            playerSlider.value++;
             round++;
             state = 3;
             Debug.Log("Player has won this hand");
@@ -228,6 +247,7 @@ public class GameController : MonoBehaviour
         else if (opponentScore > playerScore)
         {
             opponentRecord++;
+            oppSlider.value++;
             round++;
             state = 3;
             Debug.Log("Opponent has won this hand");
@@ -238,12 +258,13 @@ public class GameController : MonoBehaviour
             Debug.Log("Draw; replaying this hand");
         }
 
+
         //Reset arrows
-        foreach(GameObject arrow in pArrows)
+        foreach (GameObject arrow in pArrows)
         {
             arrow.SetActive(false);
         }
-        foreach(GameObject arrow in oppArrows)
+        foreach (GameObject arrow in oppArrows)
         {
             arrow.SetActive(false);
         }
@@ -253,12 +274,12 @@ public class GameController : MonoBehaviour
         {
             if (playerRecord > opponentRecord)
             {
-                state = 6;
+                state = 9;
                 Debug.Log("Player wins");
             }
             else if (opponentRecord > playerRecord)
             {
-                state = 6;
+                state = 9;
                 Debug.Log("Opponent wins");
             }
             else
@@ -325,6 +346,9 @@ public class GameController : MonoBehaviour
                 self[i] = Modifiers.CancelOther;
                 //Debug.Log("Shield, cancel opposing coin");
                 break;
+            case "Heart":
+                self[i] = Modifiers.Copy;
+                break;
         }        
     }
 
@@ -339,6 +363,9 @@ public class GameController : MonoBehaviour
         {
             next = i + 1;
         }
+
+        cfc.UpdateText(self[i].ToString(), i, player);
+        cfc.EnableText(i, player);
 
         switch (self[i])
         {
@@ -418,18 +445,34 @@ public class GameController : MonoBehaviour
         }
     }
 
-    int AddPoints(Modifiers val)
+    int AddPoints(Modifiers val, int i, bool player)
     {
         switch (val)
         {
             case Modifiers.OnePoint:
+                cfc.UpdateText(val.ToString(), i, player);
+                cfc.EnableText(i, player);
+                //Debug.Log("Displaying " + val.ToString() + " at " + i + " for " + player);
                 return 1;
             case Modifiers.TwoPoints:
+                cfc.UpdateText(val.ToString(), i, player);
+                cfc.EnableText(i, player);
+                //Debug.Log("Displaying " + val.ToString() + " at " + i + " for " + player);
                 return 2;
             case Modifiers.MinusOne:
+                cfc.UpdateText(val.ToString(), i, player);
+                cfc.EnableText(i, player);
+                //Debug.Log("Displaying " + val.ToString() + " at " + i + " for " + player);
                 return -1;
             case Modifiers.MinusTwo:
+                cfc.UpdateText(val.ToString(), i, player);
+                cfc.EnableText(i, player);
+                //Debug.Log("Displaying " + val.ToString() + " at " + i + " for " + player);
                 return -2;
+            case Modifiers.None:
+                cfc.UpdateText(val.ToString(), i, player);
+                cfc.EnableText(i, player);
+                return 0;
             default:
                 return 0;
         }
@@ -439,20 +482,17 @@ public class GameController : MonoBehaviour
     {
         if (player)
         {
-            pArrows[pArrowIdx].transform.position = (pCurAnchor.position + pCurTarget.position) / 2;
-            pArrows[pArrowIdx].transform.LookAt(pCurTarget.position);            pArrows[pArrowIdx].SetActive(true);
-            Debug.Log("Activated player arrow");
-
-            
+            pArrows[pArrowIdx].transform.position = ((pCurAnchor.position + pCurTarget.position) / 2) + new Vector3(0,.025f,0);
+            pArrows[pArrowIdx].transform.LookAt(pCurTarget.position);
+            pArrows[pArrowIdx].SetActive(true);
+            //Debug.Log("Activated player arrow");
         }
         else
         {
-            oppArrows[oppArrowIdx].transform.position = (oppCurAnchor.position + oppCurTarget.position) / 2;
+            oppArrows[oppArrowIdx].transform.position = ((oppCurAnchor.position + oppCurTarget.position) / 2) + new Vector3(0, .025f, 0);
             oppArrows[oppArrowIdx].transform.LookAt(oppCurTarget.position);
             oppArrows[oppArrowIdx].SetActive(true);
-            Debug.Log("Activated opp arrow");
-
-            
+            //Debug.Log("Activated opp arrow");
         }
     }
 }
