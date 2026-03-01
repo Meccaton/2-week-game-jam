@@ -132,6 +132,15 @@ public class GameController : MonoBehaviour
         pCoins.Clear();
         oppCoins.Clear();
 
+        InventoryManager inventory = Object.FindFirstObjectByType<InventoryManager>();
+        List<string> equipped = inventory.GetEquippedCoinNames();
+
+        for (int i = 0; i < equipped.Count; i++)
+        {
+            pCoins[i] = equipped[i];          // still a string
+            CoinEffects(pStack, pCoins[i], i); // unchanged gameplay logic
+        }
+
         pStack.Clear();
         oStack.Clear();
 
