@@ -65,6 +65,7 @@ public class CoinFlipControllerV2 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            //Debug.Log("Space pressed for CoinFlip");
             coins[coinIdx].movingUp = true;
             opponentCoins[coinIdx].movingUp = true;
             
@@ -104,8 +105,8 @@ public class CoinFlipControllerV2 : MonoBehaviour
 
     void WaitForInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
             coinIdx++;
             if(coinIdx > 2)
             {
@@ -114,20 +115,62 @@ public class CoinFlipControllerV2 : MonoBehaviour
                 flippingTime = false;
             }
             state = 0;
-        }
+        //}
     }
 
     public void ResetResults()
     {
         winners.Clear();
         opponentWinners.Clear();
-        foreach(CoinBehavior cb in coins)
+        DisableText(0, true);
+        DisableText(1, true);
+        DisableText(2, true);
+        DisableText(0, false);
+        DisableText(1, false);
+        DisableText(2, false);
+        //foreach(CoinBehavior cb in coins)
+        //{
+        //    cb.DisableText();
+        //}
+        //foreach (OpponentCoinBehavior ocb in opponentCoins)
+        //{
+        //    ocb.DisableText();
+        //}
+    }
+
+    public void EnableText(int i, bool player)
+    {
+        if (player)
         {
-            cb.DisableText();
+            coins[i].EnableText();
         }
-        foreach (OpponentCoinBehavior ocb in opponentCoins)
+        else
         {
-            ocb.DisableText();
+            opponentCoins[i].EnableText();
+        }
+    }
+
+    public void DisableText(int i, bool player)
+    {
+        if (player)
+        {
+            coins[i].DisableText();
+        }
+        else
+        {
+            opponentCoins[i].DisableText();
+        }
+    }
+
+    public void UpdateText(string s, int i, bool player)
+    {
+        if (player)
+        {
+            coins[i].UpdateText(s);
+        }
+        else
+        {
+            opponentCoins[i].UpdateText(s);
         }
     }
 }

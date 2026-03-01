@@ -37,7 +37,7 @@ public class OpponentCoinBehavior : MonoBehaviour
             { "Crown", 0 },
             { "Sun", 50 },
             { "Diamond", 0 },
-            { "Heart", 0 },
+            { "Heart", 50 },
             { "Lightning", 50 },
             { "Shield", 50 },
             { "Square", 50 },
@@ -93,8 +93,8 @@ public class OpponentCoinBehavior : MonoBehaviour
             if (rando < runningTotal)
             {
                 DisplayFace(entry.Key);
-                ctc.ChangeText(entry.Key);
-                EnableText();
+                //ctc.ChangeText(entry.Key);
+                //EnableText();
                 return entry.Key;
             }
         }
@@ -132,5 +132,10 @@ public class OpponentCoinBehavior : MonoBehaviour
     public void DisableText()
     {
         ctc.DisableText();
+    }
+
+    public void UpdateText(string s)
+    {
+        ctc.ChangeText(s);
     }
 }
