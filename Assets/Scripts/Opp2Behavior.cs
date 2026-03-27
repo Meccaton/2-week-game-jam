@@ -15,8 +15,8 @@ public class Opp2Behavior : MonoBehaviour
 
     void Start()
     {
-        pink = transform.Find("Pink");
-        blue = transform.Find("Blue");
+        //pink = transform.Find("Pink");
+        //blue = transform.Find("Blue");
     }
 
     void Update()

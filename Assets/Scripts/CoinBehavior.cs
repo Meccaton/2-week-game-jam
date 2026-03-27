@@ -52,6 +52,11 @@ public class CoinBehavior : MonoBehaviour
         
     }
 
+    public void UpdateFaceChance(string face, int chance)
+    {
+        chances[face] = chance;
+    }
+
     public bool FlipAnimation()
     {
         if (movingUp)

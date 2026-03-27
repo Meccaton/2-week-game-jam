@@ -2951,6 +2951,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b309f2b43c40304f8eb03c9f2546127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Opp2Behavior
+  pink: {fileID: 3563496497475322588}
+  blue: {fileID: 8022176609804503806}
+  pinkTarget: {x: 0, y: 0, z: 0}
+  blueTarget: {x: 0, y: 0, z: 0}
 --- !u!1 &2977304231542297951
 GameObject:
   m_ObjectHideFlags: 0

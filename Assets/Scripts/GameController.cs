@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    //Game state and score
     public int state;
     public int playerScore;
     public int opponentScore;
@@ -24,6 +25,8 @@ public class GameController : MonoBehaviour
     public Dictionary<int, string> oppCoins = new();
     public Dictionary<int, Modifiers> pStack = new();
     public Dictionary<int, Modifiers> oStack = new();
+
+    //Gameplay UI
     public int pArrowIdx;
     public int oppArrowIdx;
     public List<GameObject> pArrows = new();
@@ -255,7 +258,7 @@ public class GameController : MonoBehaviour
             playerSlider.value++;
             round++;
             state = 3;
-            Debug.Log("Player has won this hand");
+            //Debug.Log("Player has won this hand");
         }
         else if (opponentScore > playerScore)
         {
@@ -263,12 +266,12 @@ public class GameController : MonoBehaviour
             oppSlider.value++;
             round++;
             state = 3;
-            Debug.Log("Opponent has won this hand");
+            //Debug.Log("Opponent has won this hand");
         }
         else
         {
             state = 3;
-            Debug.Log("Draw; replaying this hand");
+            //Debug.Log("Draw; replaying this hand");
         }
 
 

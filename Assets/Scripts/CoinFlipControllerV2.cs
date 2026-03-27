@@ -6,7 +6,6 @@ public class CoinFlipControllerV2 : MonoBehaviour
 {
     public bool flippingTime;
     public int state;
-    //public GameObject cam;
     public List<CoinBehavior> coins;
     public List<OpponentCoinBehavior> opponentCoins;
     public int coinIdx;
@@ -22,29 +21,12 @@ public class CoinFlipControllerV2 : MonoBehaviour
         state = 0;
 
         coinIdx = 0;
-
-        //winners = new List<string>(3)
-        //{
-        //    null,
-        //    null,
-        //    null
-        //};
-
-        //opponentWinners = new List<string>(3)
-        //{
-        //    null,
-        //    null,
-        //    null
-        //};
     }
 
     void Update()
     {
         if(flippingTime)
         {
-            //cam.transform.LookAt(coins[coinIdx].transform);
-            //cam.transform.rotation *= Quaternion.Euler(-15f, 0f, 0f);
-
             if (state == 0)
             {
                 Hold();
