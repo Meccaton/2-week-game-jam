@@ -99,7 +99,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SkyBaseColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SkyBottomGradientColor: {r: 1.7295439, g: 0.36250678, b: -0.6944627, a: 1}
-    - _SkyTopGradientColor: {r: -0.41887358, g: 1.1049663, b: 0.88352925, a: 1}
+    - _SkyBottomGradientColor: {r: 1.833337, g: 1.5026864, b: 0.21444409, a: 1}
+    - _SkyTopGradientColor: {r: 1.0496869, g: 0.35577965, b: 0.83644456, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
