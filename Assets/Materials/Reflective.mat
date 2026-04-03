@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Reflective
-  m_Shader: {fileID: -6465566751694194690, guid: 0775fa09015cf448d84d007f27a6459b, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 1809c8f91c7ed42689277a721ec68f2a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
