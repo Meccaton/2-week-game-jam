@@ -1328,7 +1328,7 @@ GameObject:
   - component: {fileID: 4123663154438989987}
   - component: {fileID: 8642322050610915650}
   m_Layer: 0
-  m_Name: OpponentCoin
+  m_Name: OpponentCoin(deprecated)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

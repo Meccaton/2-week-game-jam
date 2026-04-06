@@ -7,7 +7,7 @@ public class CoinFlipControllerV2 : MonoBehaviour
     public bool flippingTime;
     public int state;
     public List<CoinBehavior> coins;
-    public List<OpponentCoinBehavior> opponentCoins;
+    public List<CoinBehavior> opponentCoins;
     public int coinIdx;
     public List<string> winners = new();
     public List<string> opponentWinners = new();
