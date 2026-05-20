@@ -23,8 +23,8 @@ public class GameController : MonoBehaviour
     public CoinFlipControllerV2 cfc;
     public Dictionary<int, string> pCoins = new();
     public Dictionary<int, string> oppCoins = new();
-    public Dictionary<int, Modifiers> pStack = new();
-    public Dictionary<int, Modifiers> oStack = new();
+    public Dictionary<int, CoinData.Modifier> pStack = new();
+    public Dictionary<int, CoinData.Modifier> oStack = new();
 
     //Gameplay UI
     public int pArrowIdx;
@@ -46,22 +46,22 @@ public class GameController : MonoBehaviour
     public float winTextTimer = 0f;
     public float winTextAlternatingTime = .1f;
 
-    public enum Modifiers
-    {
-        None,//implemented
-        OnePoint,//implemented
-        TwoPoints,//implemented
-        MinusOne,//implemented
-        MinusTwo,//implemented
-        Send,//implemented
-        Take,//implemented
-        Swap,//need to figure out how exactly it will work
-        CancelSelf,//implemented
-        CancelOther,//implemented
-        Copy,//implemented
-        Reflip,//more complicated; implement later if time
-        Protect,//more complicated; implement later if time
-    }
+    //public enum Modifiers
+    //{
+    //    None,//implemented
+    //    OnePoint,//implemented
+    //    TwoPoints,//implemented
+    //    MinusOne,//implemented
+    //    MinusTwo,//implemented
+    //    Send,//implemented
+    //    Take,//implemented
+    //    Swap,//need to figure out how exactly it will work
+    //    CancelSelf,//implemented
+    //    CancelOther,//implemented
+    //    Copy,//implemented
+    //    Reflip,//more complicated; implement later if time
+    //    Protect,//more complicated; implement later if time
+    //}
 
     void Start()
     {
